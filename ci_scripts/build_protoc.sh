@@ -14,6 +14,9 @@ git clone https://github.com/protocolbuffers/protobuf.git gprotobuf
 cd gprotobuf
 git checkout $PROTOBUF_SHA
 git reset --hard
+
+git rev-parse HEAD
+
 rm -rf .git
 
 $ORIGINAL_PWD/bazel build @com_google_protobuf//:protoc
