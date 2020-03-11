@@ -25,21 +25,6 @@ try_goto_cmd_location
 
 set -e
 
-findWorkspace() {
-  OLD_PWD=$PWD
-  if [ ! -f WORKSPACE ]; then
-    cd ..
-    if [ "$PWD" = "$OLD_PWD" ]; then
-      echo "Didn't find the workspace"
-      exit 1
-    fi
-
-    findWorkspace
-  fi
-}
-
-findWorkspace
-
 REPO_ROOT=$PWD
 cd $ORIGINAL_PWD
 
