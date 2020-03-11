@@ -21,4 +21,4 @@ rm -rf .git
 
 $ORIGINAL_PWD/bazel build @com_google_protobuf//:protoc
 
-cp bazel-bin/external/com_google_protobuf/protoc $ORIGINAL_PWD/protoc
+cp bazel-bin/protoc $ORIGINAL_PWD/protoc
