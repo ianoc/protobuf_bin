@@ -19,7 +19,7 @@ git rev-parse HEAD
 
 rm -rf .git
 
-cp ORIGINAL_PWD/user.bazelrc .bazelrc
+cp $ORIGINAL_PWD/user.bazelrc .bazelrc
 $ORIGINAL_PWD/bazel build @com_google_protobuf//:protoc
 
 cp bazel-bin/protoc $ORIGINAL_PWD/protoc

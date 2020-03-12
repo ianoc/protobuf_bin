@@ -60,8 +60,8 @@ jobs:
           path: downloads
       - name: show downloads
         run : ls -R downloads
-      - name: Build update_dependencies.sh
-        run: ./ci_scripts/make_update_dependencies.sh "v0.1-${{ github.run_number }}"
+      - name: Build make_proto_zip.sh
+        run: ./ci_scripts/make_proto_zip.sh
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -73,5 +73,5 @@ jobs:
             downloads/protoc-macos.sha256
             downloads/protoc-linux
             downloads/protoc-linux.sha256
-            update_dependencies.sh
+            protobuf.zip
         id: "automatic_releases"
