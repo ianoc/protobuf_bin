@@ -1,0 +1,12 @@
+options:
+  languages: [ "java" ]
+  resolverType: "coursier"
+  strictVisibility: true
+  transitivity: runtime_deps
+  versionConflictPolicy: highest
+
+dependencies:
+  javax.inject:
+    javax.inject:
+      lang: java
+      version: "1"

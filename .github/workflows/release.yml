@@ -15,15 +15,10 @@ jobs:
         include:
           - os: macos-latest
             artifact: protoc-macos
-            bazel_installer_sha: b4c94148f52854b89cff5de38a9eeeb4b0bcb3fb3a027330c46c468d9ea0898b
           - os: ubuntu-latest
-            graal_url: https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.0.0/graalvm-ce-java11-linux-amd64-20.0.0.tar.gz
             artifact: protoc-linux
-            bazel_installer_sha: d6cea18d59e9c90c7ec417b2645834f968132de16d0022c7439b1e60438eb8c9
     env:
-      BAZEL_INSTALLER_SHA: ${{ matrix.bazel_installer_sha }}
       BAZEL_BIN_LOC: "${{ github.workspace }}/.bazel-cache/bazel-bin"
-      BAZEL_VERSION: 2.1.1
     steps:
       - uses: actions/checkout@v2
       - name: Bazel output cache
@@ -39,8 +34,6 @@ jobs:
           echo "build --config github_actions" > user.bazelrc
           echo "build --disk_cache ${{ github.workspace }}/.bazel-cache/disk-cache" >> user.bazelrc
           echo "build --repository_cache ${{ github.workspace }}/.bazel-cache/repo-cache" >> user.bazelrc
-      - name: Install bazel
-        run: ./ci_scripts/ci_install_bazel.sh
       - name: Build protoc
         run: ./ci_scripts/build_protoc.sh
       - name: Prepare outputs from platform run
