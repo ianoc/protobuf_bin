@@ -73,4 +73,5 @@ jobs:
             downloads/protoc-linux
             downloads/protoc-linux.sha256
             protobuf.zip
+            protobuf.zip.sha256
         id: "automatic_releases"

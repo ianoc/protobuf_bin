@@ -40,3 +40,9 @@ cp $ORIGINAL_PWD/downloads/protoc-macos protoc_binaries/protoc-macos
 chmod +x protoc_binaries/protoc-macos
 
 zip -r $ORIGINAL_PWD/protobuf.zip *
+
+
+cd $ORIGINAL_PWD
+GENERATED_SHA_256=$(shasum -a 256 protobuf.zip | awk '{print $1}')
+echo $GENERATED_SHA_256 > protobuf.zip.sha256
+
