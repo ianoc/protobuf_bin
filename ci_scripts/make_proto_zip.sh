@@ -33,10 +33,10 @@ mkdir protoc_binaries
 cp $ORIGINAL_PWD/injectable_resources/BUILD_CONTENTS_FOR_PROTOC_BINARIES protoc_binaries/BUILD
 
 
-cp $ORIGINAL_PWD/protoc-linux protoc_binaries/protoc-linux
+cp $ORIGINAL_PWD/downloads/protoc-linux protoc_binaries/protoc-linux
 chmod +x protoc_binaries/protoc-linux
 
-cp $ORIGINAL_PWD/protoc-macos protoc_binaries/protoc-macos
+cp $ORIGINAL_PWD/downloads/protoc-macos protoc_binaries/protoc-macos
 chmod +x protoc_binaries/protoc-macos
 
 zip -r $ORIGINAL_PWD/protobuf.zip *
