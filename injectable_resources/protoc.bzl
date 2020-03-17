@@ -1,11 +1,12 @@
 def _protoc_exec_impl(ctx):
+    f = ctx.actions.declare_file(ctx.label.name)
     ctx.actions.run_shell(
             inputs = depset(transitive = [ctx.attr.binary_file.files]),
-            outputs = [ctx.outputs.exe],
-            command = "cp %s %s" % (ctx.attr.binary_file.files.to_list()[0].path, ctx.outputs.exe.path),
+            outputs = [f],
+            command = "cp %s %s" % (ctx.attr.binary_file.files.to_list()[0].path, f.path),
     )
-    runfiles = ctx.runfiles(files = [ctx.outputs.exe])
-    return [DefaultInfo(runfiles = runfiles, executable = ctx.outputs.exe)]
+    runfiles = ctx.runfiles(files = [f])
+    return [DefaultInfo(runfiles = runfiles, executable = f)]
 
 protoc_exec = rule(
     implementation = _protoc_exec_impl,
@@ -15,11 +16,8 @@ protoc_exec = rule(
             allow_single_file=True
         ),
     },
-    executable = True,
-    outputs = {"exe": "protoc"}
+    executable = True
 )
-
-
 
 def get_proto_binaries():
   protoc_exec(name = "protoc",
