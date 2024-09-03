@@ -48,12 +48,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Download linux protoc
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: protoc-linux
           path: downloads
       - name: Download macos protoc
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: protoc-macos
           path: downloads
